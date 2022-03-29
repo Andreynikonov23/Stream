@@ -7,7 +7,9 @@ import java.util.Collections;
 
 public class Main{
     public static void main(String[] args) throws FileNotFoundException {
+        //программа работает только 
         ArrayList<Character> list = new ArrayList<>();
+        ArrayList<String> data = new ArrayList<>();
         Path path = Path.of("C:/test/test.txt");
         try (InputStream reader = new FileInputStream(String.valueOf(path))) {
             while (reader.available() > 0) {
@@ -16,30 +18,33 @@ public class Main{
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         for (int i = 0; i < list.size(); i++) {
-            System.out.println(list.get(i));
-        }
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i) == '\n' ) {
-                list.remove(list.get(i));
+            if (list.get(i) == '\n'){
+                list.set(i, '-');
             }
         }
-        Collections.sort(list);
         System.out.println(list);
-        ArrayList<String> strings = new ArrayList<>();
-        for (int i = 0; i < list.size(); i++) {
-            strings.add(String.valueOf(list.get(i)));
-        }
-        System.out.println(strings);
+        ArrayList<String> temp = new ArrayList<>();
+            for (int i = 0, j=1; i < list.size(); i++, j++) {
+                if (list.get(i) != '-') {
+                    if (list.get(j) != '-'){
+                        data.add(String.valueOf(list.get(i)) + String.valueOf(list.get(j)));
+                    } else data.add(String.valueOf(list.get(i)));
+                }
+            }
+        System.out.println(data);
         ArrayList<Integer> integers = new ArrayList<>();
-        for (int i = 0; i < strings.size(); i++) {
-            integers.add(Integer.valueOf(strings.get(i)));
+        for (int i = 0; i < data.size(); i++) {
+            integers.add(Integer.valueOf(data.get(i)));
         }
-        System.out.println(integers);
+        Collections.sort(integers);
+        ArrayList<Integer> result = new ArrayList<>();
         for (int i = 0; i < integers.size(); i++) {
-            if (integers.get(i)%2 == 0){
-                System.out.print(integers.get(i) + " ");
+            if (integers.get(i) %2 == 0){
+                result.add(integers.get(i));
             }
         }
+        System.out.println(result);
     }
 }
