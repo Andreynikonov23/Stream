@@ -6,8 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Main{
-    public static void main(String[] args) throws FileNotFoundException {
-        //программа работает только 
+    public static void main(String[] args) throws FileNotFoundException { 
         ArrayList<Character> list = new ArrayList<>();
         ArrayList<String> data = new ArrayList<>();
         Path path = Path.of("C:/test/test.txt");
