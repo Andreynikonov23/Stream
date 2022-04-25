@@ -9,9 +9,10 @@ import java.util.ArrayList;
 public class Main {
     /*
     1. Ввести с консоли имя файла
-    2. Найти байт или байты с минимальным количеством повторов
-    3. Вывести их на экран через пробел
-    4. Закрыть поток ввода-вывода
+    2. Считать все байты из файла.
+    3. Не учитывая повторений - отсортировать их по байт-коду в возрастающем порядке.
+    4. Вывести на экран
+    5. Закрыть поток ввода-вывода
      */
     public static void main(String[] args){
         String path = "C:/test/file.txt";
@@ -41,7 +42,6 @@ public class Main {
                 }
             }
         }
-
         for (int i = 0; i < repeatByte.size(); i++) {
             for (int j = 1; j < repeatByte.size(); j++) {
                 if (repeatByte.get(i) == repeatByte.get(j)){
@@ -50,9 +50,6 @@ public class Main {
                 }
             }
         }
-        System.out.println(counts);
-        System.out.println(repeatByte);
-        ArrayList<Integer> integers = new ArrayList<>();
         int minCount = repeatByte.get(0);
         for (int i = 0; i < counts.size(); i++) {
             if (counts.get(i) < minCount){
@@ -64,6 +61,5 @@ public class Main {
                 System.out.println("Byte: " + repeatByte.get(i) + ", repeating - " + counts.get(i));
             }
         }
-
     }
 }
