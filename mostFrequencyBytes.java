@@ -3,10 +3,8 @@ package nick.pack;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Main {
     /*
@@ -43,21 +41,22 @@ public class Main {
                 }
             }
         }
-
-        System.out.println(counts + " -- size: " + counts.size());
-        System.out.println(repeatByte + " -- size: " + repeatByte.size());
-        int index = 0;
         for (int i = 0; i < repeatByte.size(); i++) {
             for (int j = 1; j < repeatByte.size(); j++) {
-                System.out.println(repeatByte.get(i) + " " + repeatByte.get(j));
-                if (bytes.get(i) == (bytes.get(j))){
-                    System.out.println("delete");
+                if (repeatByte.get(i) == repeatByte.get(j)){
                     repeatByte.remove(j);
                     counts.remove(j);
                 }
             }
         }
-        System.out.println(counts + " -- size: " + counts.size());
-        System.out.println(repeatByte + " -- size: " + repeatByte.size());
+        int maxValue = 0;
+        int index = 0;
+        for (int i = 0; i < counts.size(); i++) {
+            if (counts.get(i) > maxValue){
+                maxValue = counts.get(i);
+                index = i;
+            }
+        }
+        System.out.println("Byte: " + repeatByte.get(index) + ", repeating - " + maxValue);
     }
 }
