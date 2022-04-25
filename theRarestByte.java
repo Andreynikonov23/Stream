@@ -15,7 +15,9 @@ public class Main {
     5. Закрыть поток ввода-вывода
      */
     public static void main(String[] args){
-        String path = "C:/test/file.txt";
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Insert path:");
+        String path = scanner.nextLine();
         ArrayList<Integer> bytes = new ArrayList<>();
         try(FileInputStream inputStream = new FileInputStream(path)){
             while (inputStream.available() > 0){
