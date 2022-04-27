@@ -38,7 +38,12 @@ public class Main {
         }
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите id");
-        int id = Integer.parseInt(scanner.nextLine());
+        int id = 0;
+        try {
+           id = Integer.parseInt(scanner.nextLine());
+        } catch (Exception e){
+            System.out.println("Введено недопустимое значение!");
+        }
         String strId = String.valueOf(id);
         boolean isFalse = false;
         for (int i = 0; i < arrayList.size(); i++) {
