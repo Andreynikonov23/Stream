@@ -3,8 +3,7 @@ package nick.pack;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     /*
@@ -19,7 +18,7 @@ public class Main {
      */
     public static void main(String[] args) throws IOException {
         String build = "C://test/task10/lion.txt";
-        ArrayList<Byte[]> arrayList = new ArrayList<>();
+        HashMap<Integer, byte[]> map = new HashMap<>();
         FileInputStream inputStream = null;
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите имя файла");
@@ -29,7 +28,15 @@ public class Main {
                 break;
             }
             String path = "C://test/task10/" + file + ".txt";
-            System.out.println(file.substring(file.length() - 1));
+            int part = Integer.parseInt(file.substring(file.length() - 1));
+            inputStream = new FileInputStream(path);
+            byte[] bytes = new byte[inputStream.available()];
+            while (inputStream.available() > 0){
+                inputStream.read(bytes);
+            }
+            map.put(part, bytes);
         }
+        ArrayList<Integer> keys = new ArrayList<>();
     }
 }
+
