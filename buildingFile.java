@@ -2,6 +2,7 @@ package nick.pack;
 
 
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.*;
 
@@ -20,6 +21,7 @@ public class Main {
         String build = "C://test/task10/lion.txt";
         HashMap<Integer, byte[]> map = new HashMap<>();
         FileInputStream inputStream = null;
+        FileOutputStream outputStream = new FileOutputStream(build);
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите имя файла");
         while (true) {
@@ -36,7 +38,9 @@ public class Main {
             }
             map.put(part, bytes);
         }
-        ArrayList<Integer> keys = new ArrayList<>();
+        TreeMap<Integer, byte[]> treeMap = new TreeMap<>(map);
+        for (Map.Entry<Integer, byte[]> entry : treeMap.entrySet()){
+            outputStream.write(entry.getValue());
+        }
     }
 }
-
